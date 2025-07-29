@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Darey Digital Design | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #111;           /* Black background */
+            color: #f7f7f7;             /* Light text for contrast */
+        }
+        header {
+            background: linear-gradient(90deg, #222 60%, #333 100%);
+            color: #fff;
+            padding: 40px 0 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: #00c6ff; /* Blue color */
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        nav {
+            margin: 30px 0 0 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            background: #333;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        nav a:hover {
+            background: #00c6ff;
+            color: #111;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .section {
+            background: #181818;        /* Darker section background */
+            color: #f7f7f7;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+            margin-bottom: 40px;
+            padding: 32px;
+        }
+        .section h2 {
+            color: #00c6ff;
+            margin-top: 0;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .skill-card {
+            flex: 1 1 250px;
+            background: #222;
+            color: #f7f7f7;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        }
+        .skill-card h3 {
+            margin-top: 0;
+            color: #00c6ff;
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .project-card {
+            background: #232323;
+            color: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+            padding: 20px;
+        }
+        .project-card h4 {
+            margin-top: 0;
+        }
+        .contact {
+            text-align: center;
+        }
+        .contact a {
+            color: #00c6ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .skill-images {
+            margin-bottom: 18px;
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .skill-images img {
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 5px solid #00c6ff;
+            background: #181818;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 8px;
+        }
+        .skill-images img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.22);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        form input, form textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: #f7f7f7;
+            font-size: 1rem;
+        }
+        form button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #00c6ff;
+            color: #111;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        form button:hover {
+            background: #0099cc;
+        }
+        .skill-bar {
+            margin-bottom: 16px;
+        }
+        .skill-bar span {
+            display: block;
+            margin-bottom: 4px;
+            color: #00c6ff;
+        }
+        .bar {
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 8px;
+            background: #00c6ff;
+            border-radius: 10px;
+        }
+        @media (max-width: 700px) {
+            .skills { flex-direction: column; }
+            .container { padding: 0 8px; }
+            .section { padding: 16px; }
+        }
+        .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin: 24px auto 18px;
+    display: block;
+    border: 6px solid #00c6ff;
+    background: #181818;
+    box-shadow: 0 6px 32px rgba(0,198,255,0.18), 0 2px 12px rgba(0,0,0,0.18);
+    object-fit: cover;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.profile-img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 48px rgba(0,198,255,0.22), 0 4px 24px rgba(0,0,0,0.22);
+}
+    </style>
+    {% load static %}
+    {% if messages %}
+  <div>
+    {% for message in messages %}
+      <div style="background:#00c6ff;color:#111;padding:10px 20px;border-radius:8px;margin-bottom:10px;">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="{% static 'img/your-photo.JPG' %}" alt="Darey Digital"
+     class="profile-img">
+        <h1>Darey Digital Design</h1>
+        <p>Graphics Designer | Web Developer | UI/UX Designer</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="section" id="about" data-aos="fade-up">
+            <h2>About Me</h2>
+            <p>
+                Hi! I'm Darey, a passionate creative with expertise in graphics design, web development, and UI/UX design with 5years+ experience. I love transforming ideas into visually stunning and user-friendly digital experiences. Whether it's branding, websites, or app interfaces, I bring a blend of creativity and technical skill to every project.
+            </p>
+        </section>
+        <section class="section" id="skills" data-aos="fade-up">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill-card">
+                    <div class="skill-images">
+                        <img src="{% static 'img/graphics1.jpg' %}" alt="Graphics Work 1">
+                        <img src="{% static 'img/graphics2.jpg' %}" alt="Graphics Work 2">
+                    </div>
+                    <h3>Graphics Design</h3>
+                    <ul>
+                        <li>Adobe Photoshop, Illustrator, InDesign</li>
+                        <li>Branding & Logo Design</li>
+                        <li>Social Media Graphics</li>
+                        <li>Print & Digital Media</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-images">
+                        <img src="{% static 'img/web1.png' %}" alt="Web Project 1">
+                        <img src="{% static 'img/web2.png' %}" alt="Web Project 2">
+                    </div>
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>HTML5, CSS3, JavaScript</li>
+                        <li>React, Vue, Django</li>
+                        <li>Responsive Design</li>
+                        <li>WordPress & CMS</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-images">
+                        <img src="{% static 'img/uiux1.jpg' %}" alt="UI/UX Work 1">
+                        <img src="{% static 'img/uiux2.jpg' %}" alt="UI/UX Work 2">
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <ul>
+                        <li>Figma, Adobe XD, Sketch</li>
+                        <li>User Research & Wireframing</li>
+                        <li>Prototyping & Usability Testing</li>
+                        <li>Design Systems</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <span>Photoshop</span>
+                <div class="bar"><div class="progress" style="width:90%"></div></div>
+            </div>
+             <div class="skill-bar">
+                <span>UI/UX</span>
+                <div class="bar"><div class="progress" style="width:80%"></div></div>
+            </div>
+            <div class="skill-bar">
+                <span>React</span>
+                <div class="bar"><div class="progress" style="width:80%"></div></div>
+            </div>
+            <div class="skill-bar">
+                <span>JavaScript</span>
+                <div class="bar"><div class="progress" style="width:70%"></div></div>
+            </div>
+             <div class="skill-bar">
+                <span>Python</span>
+                <div class="bar"><div class="progress" style="width:88%"></div></div>
+            </div>
+        </section>
+        <section class="section" id="projects" data-aos="fade-up">
+            <h2>Featured Projects</h2>
+            <div class="projects">
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                    <h4>Brand Identity for ZEE GOLD COLLECTION</h4>
+                    <p>Developed a complete branding package including logo, business cards, and social media templates for a startup.</p>
+                </div>
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                    <h4>Portfolio Website</h4>
+                    <p>Designed and built a responsive portfolio website to showcase my work and attract new clients.</p>
+                </div>
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                    <h4>Mobile App UI/UX</h4>
+                    <p>Created wireframes and high-fidelity prototypes for a mobile app, focusing on seamless user experience.</p>
+                </div>
+                <!-- Add more project cards as needed -->
+            </div>
+        </section>
+        <section class="section" id="testimonials" data-aos="fade-up">
+            <h2>Testimonials</h2>
+            <blockquote>
+                "Darey delivered beyond expectations. Our brand looks amazing!"<br>
+                <span>- Zee Gold, Zee Gold Accessories</span>
+            </blockquote>
+        </section>
+        <section class="section contact" id="contact" data-aos="fade-up">
+            <h2>Contact</h2>
+            <p>
+                Let's work together! <br>
+                <a href="digitalsdarey@gmail.com">digitalsdarey@gmail.com</a> <br>
+                <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/Holuwadamilarey105" target="_blank">GitHub</a>
+            </p>
+            <a href="{% static 'img/Darey_CV.pdf' %}" class="btn" download>Download CV</a>
+            <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 900, // Animation duration in ms
+        once: true     // Only animate once
+      });
+    </script>
+    <script>
+  // Fade out messages after 5 seconds
+  setTimeout(function() {
+    document.querySelectorAll('[style*="background:#00c6ff"]').forEach(function(msg) {
+      msg.classList.add('fade-out');
+      setTimeout(function() {
+        msg.style.display = 'none';
+      }, 1000); // Wait for the fade-out transition to finish
+    });
+  }, 5000);
+</script>
+</body>
+</html>
