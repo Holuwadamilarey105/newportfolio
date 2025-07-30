@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     'myportfolio.onrender.com',
     'www-dareydigital-com.onrender.com',
     'dareydigital.onrender.com',
+    'www-dareydigital-com-onrender-com.onrender.com',
 ]
 
 
