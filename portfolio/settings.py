@@ -28,8 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'myportfolio.onrender.com',
-    'www.dareydigital.com',
-    'dareydigital.com',
+    'www-dareydigital-com.onrender.com',
+    'dareydigital.onrender.com',
 ]
 
 
