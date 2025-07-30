@@ -31,8 +31,9 @@ ALLOWED_HOSTS = [
     'www-dareydigital-com.onrender.com',
     'dareydigital.onrender.com',
     'www-dareydigital-com-onrender-com.onrender.com',
+    'dareydigital-portfolio.onrender.com',
 ]
-
+# gunicorn portfolio.wsgi
 
 # Application definition
 
